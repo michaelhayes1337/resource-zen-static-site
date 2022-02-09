@@ -1,0 +1,28 @@
+//
+//Backgrounds
+//
+$bg-dark-blue: #5f9be4;
+$bg-light-blue: #e2efff;
+
+//
+//Buttons
+//
+$button-primary: #6295D2;
+$button-socials: #77c5b0;
+
+//
+//Text
+//
+
+$text-green: #49b295;
+$text-dark-blue: #1f303f;
+$text-light-blue: #657281;
+
+//
+//Fonts
+//
+@font-face {
+    font-family: space-grotesk;
+    src: url(../assets/fonts/spacegrotesk/SpaceGrotesk-Medium.ttf);
+}
+$font-space-grotesk: space-grotesk;

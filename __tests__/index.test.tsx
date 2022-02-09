@@ -11,4 +11,11 @@ describe('Home', () => {
 
     expect(heading).toBeInTheDocument()
   })
+
+  it('contains a link to nextjs site',()=>{
+    render(<Home />)
+    const link = screen.getByRole('link', {
+      name: 'Next.js!'
+    })
+  })
 })
