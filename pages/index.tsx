@@ -1,65 +1,49 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import React from 'react'
 
-import styles from '@/pages/index.module.css'
+//Socials
+import FacebookSocial from 'assets/icons/facebookSocial'
+import LinkedInSocial from 'assets/icons/linkedinSocial'
+import YoutubeSocial from 'assets/icons/youtubeSocial'
+import InstagramSocial from 'assets/icons/instagramSocial'
 
-export default function Home() {
+//Cards
+import JobcardIcon from 'assets/icons/jobcardIcon'
+import InvoiceIcon from 'assets/icons/invoiceIcon'
+import StockIcon from 'assets/icons/stockIcon'
+
+const Home: React.FC = ()=> {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a href="https://vercel.com/new" className={styles.card}>
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+    <div className="homePage">
+        <div className="callToAction">
+            <h1>
+                Let <span>Resource</span> <span>Zen</span> make life easier for you.
+            </h1>
+            <p>We help you customise your business resources such as, job cards, invoices, stock list, and much more.  </p>
+            <button>Get Started</button>
+            <div className="socials">
+                <FacebookSocial/>
+                <LinkedInSocial/>
+                <YoutubeSocial/>
+                <InstagramSocial/>
+            </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer>
+        <div className="features">
+            <h1>OUR FEATURES</h1>
+            <p>Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+            <div className="cardGrid">
+                <div className="card">
+                    <JobcardIcon/>
+                </div>
+                <div className="card">
+                    <InvoiceIcon/>
+                </div>
+                <div className="card">
+                    <StockIcon/>
+                </div>
+            </div>
+        </div>
     </div>
   )
 }
+  
+export default Home
