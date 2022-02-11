@@ -4,7 +4,12 @@ type Props = {}
 
 const About = (props: Props) => {
   return (
-    <div>About</div>
+    <div className="aboutPage">
+        <h1>What is <span id='spanGreen'>Resource</span> <span id='spanBlue'>Zen</span>?</h1>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget nunc commodo facilisi diam. Justo mi ipsum pharetra nulla commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget nunc commodo facilisi diam. Justo mi ipsum pharetra nulla commodo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc eget nunc commodo facilisi diam. Justo mi ipsum pharetra nulla commodo. 
+        </p>
+    </div>
   )
 }
 

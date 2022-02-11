@@ -16,7 +16,7 @@ const Home: React.FC = ()=> {
     <div className="homePage">
         <div className="callToAction">
             <h1>
-                Let <span>Resource</span> <span>Zen</span> make life easier for you.
+                Let <span id='spanGreen'>Resource</span> <span id='spanBlue'>Zen</span> make life easier for you.
             </h1>
             <p>We help you customise your business resources such as, job cards, invoices, stock list, and much more.  </p>
             <button>Get Started</button>
