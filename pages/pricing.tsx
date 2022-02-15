@@ -1,10 +1,13 @@
 import React from 'react'
-
+import Head from 'next/head'
 type Props = {}
 
 const Pricing = (props: Props) => {
   return (
     <div className="pricingPage">
+        <Head>
+          <title key="title">Pricing</title>
+        </Head>
         <h1><span id='spanGreen'>Resource</span> <span id='spanBlue'>Zen&apos;s</span> Pricing Plans</h1>
         <div className="pricingCards">
             <div className="lower">

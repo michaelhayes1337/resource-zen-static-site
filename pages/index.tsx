@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Head from 'next/head'
 //Socials
 import FacebookSocial from 'assets/icons/facebookSocial'
 import LinkedInSocial from 'assets/icons/linkedinSocial'
@@ -14,6 +14,9 @@ import StockIcon from 'assets/icons/stockIcon'
 const Home: React.FC = ()=> {
   return (
     <div className="homePage">
+        <Head>
+          <title key="title">Resource Zen</title>
+        </Head>
         <div className="callToAction">
             <h1>
                 Let <span id='spanGreen'>Resource</span> <span id='spanBlue'>Zen</span> make life easier for you.

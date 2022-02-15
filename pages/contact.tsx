@@ -1,4 +1,5 @@
 import React from "react";
+import Head from 'next/head'
 import LocationIcon from "../assets/icons/locationIcon";
 import EmailIcon from "../assets/icons/emailIcon";
 import MobileIcon from "../assets/icons/mobileIcon";
@@ -7,6 +8,9 @@ type Props = {};
 const Contact = (props: Props) => {
   return (
     <div className="contactPage">
+      <Head>
+          <title key="title">Contact</title>
+      </Head>
       <div className="textContent">
         <h1>
           <span id="spanGreen">Resource</span> <span id="spanBlue">Zen</span>{" "}

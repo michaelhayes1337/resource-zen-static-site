@@ -1,10 +1,13 @@
 import React from 'react'
-
+import Head from 'next/head'
 type Props = {}
 
 const Roadmap = (props: Props) => {
   return (
     <div className="roadmapPage">
+        <Head>
+          <title key="title">Roadmap</title>
+        </Head>
         <h1><span id='spanGreen'>Resource</span> <span id='spanBlue'>Zen&apos;s</span> roadmap</h1>
         <div className="roadmapGraphic">
             <h2>No idea how to do this ask boss man Morgan</h2>
