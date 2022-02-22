@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    //added es6 for mui
+    "lib": ["dom", "dom.iterable", "esnext", "es6"],
+    //added for mui
+    "noImplicitAny": true,
+    //added for mui
+    "noImplicitThis": true,
+    //added for mui
+    "strictNullChecks": true,
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
