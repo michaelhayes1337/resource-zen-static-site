@@ -10,6 +10,12 @@ body {
   box-sizing: border-box;
 }
 
+.test {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 main {
   padding: 5rem 0;
   flex: 1;

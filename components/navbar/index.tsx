@@ -1,93 +1,29 @@
-import Link from "next/link";
-import Image from "next/image";
-import styles from "./navbar.module.scss";
-import rzLogo from "../../assets/images/RZLogo.png";
+import Link from 'next/link';
+import Image from 'next/image';
+import styles from './navbar.module.scss';
+import rzLogo from '../../assets/images/RZLogo.png';
 
 /*
-    MUIv5 Appbar
+    MUI
 */
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
+import * as React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
 
-const pages = ["Home", "About", "Roadmap", "Pricing", "Contact Us"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const pages = ['Home', 'About', 'Roadmap', 'Pricing', 'Contact Us'];
 
 /*
     Tabs
 */
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
 
-interface TabPanelProps {
-  children?: React.ReactNode;
-  index: number;
-  value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
-  const { children, value, index, ...other } = props;
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`simple-tabpanel-${index}`}
-      aria-labelledby={`simple-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-function a11yProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    "aria-controls": `simple-tabpanel-${index}`,
-  };
-}
+import Button from '@mui/material/Button';
 
 const Navbar: React.FC = () => {
-  /*
-    Appbar tings
-  */
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
   /*
   Tabs tings
 */
@@ -100,22 +36,48 @@ const Navbar: React.FC = () => {
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Box>
+        <Toolbar
+          disableGutters
+          sx={{
+            border: '1px solid green',
+          }}
+        >
+          <Box
+            sx={{
+              border: '1px solid green',
+              width: '25%',
+            }}
+          >
             <Typography>Resource Zen</Typography>
           </Box>
-          <Box sx={{ width: "100%" }}>
+          <Box
+            sx={{
+              width: '100%',
+              border: '1px solid green',
+            }}
+          >
             <Tabs
               value={value}
               onChange={handleChange}
               textColor="secondary"
               indicatorColor="secondary"
-              aria-label="secondary tabs example"
+              centered
             >
-              <Tab value="one" label="Item One" />
-              <Tab value="two" label="Item Two" />
-              <Tab value="three" label="Item Three" />
+              {pages.map((page) => {
+                return <Tab value={page} label={page} key={page} />;
+              })}
             </Tabs>
+          </Box>
+          <Box
+            sx={{
+              border: '1px solid green',
+              width: '15%',
+            }}
+          >
+            <Button variant="text" sx={{ color: 'white' }}>
+              Sign Up
+            </Button>
+            <Button variant="contained">Sign In</Button>
           </Box>
         </Toolbar>
       </Container>
@@ -124,30 +86,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-/* <div className={styles.navbarWrapper}>
-    <h1>Resource Zen</h1>
-    <ul>
-      <li><Link href="/">Home</Link></li>
-      <li><Link href="/about">About</Link></li>
-      <li><Link href="/roadmap">Roadmap</Link></li>
-      <li><Link href="/pricing">Pricing</Link></li>
-      <li><Link href="/contact">Contact Us</Link></li>
-    </ul>
-    <div className="logSign">
-    <Button variant="contained">up</Button>;
-    <Button variant="contained">in</Button>;
-    </div>
-    <svg width="39" height="30" viewBox="0 0 39 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fillRule="evenodd" clipRule="evenodd" d="M0 30H39V25H0V30ZM0 17.5H39V12.5H0V17.5ZM0 0V5H39V0H0Z" fill="#162542"/>
-    </svg>
-    <div className={styles.logo}>
-    <Image
-        src={rzLogo}
-        alt="leaf and gear logo"
-        width={100}
-        height={100}
-      />
-    </div>
-  </div> 
-  */
