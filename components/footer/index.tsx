@@ -1,12 +1,48 @@
-import React from "react";
-import Image from 'next/image'
-import styles from "./footer.module.scss";
-import rzLogo from '../../assets/images/RZLogo.png';
-
-const Footer: React.FC = ()=>{
-  
+import React from 'react';
+import { Box, Grid, Typography } from '@mui/material';
+import LogoIcon from '../../assets/icons/logoIcon';
+const Footer: React.FC = () => {
   return (
-    <div className={styles.wrapper}>
+    <Box
+      sx={{
+        border: '1px solid red',
+        height: '30vh',
+        backgroundColor: '#E2EFFF',
+      }}
+    >
+      <Grid container spacing={2}>
+        <Grid item xs={4}>
+          <LogoIcon></LogoIcon>
+          <Typography variant="h6">CopyWrite Text Here</Typography>
+        </Grid>
+        <Grid item xs={4}>
+          <Typography>Links</Typography>
+          <Grid container spacing={2}>
+            {['Home', 'About', 'Roadmap', 'Pricing', 'Contact Us'].map(
+              (page) => {
+                return (
+                  <Grid item xs={6} key={page}>
+                    <Typography>page</Typography>
+                  </Grid>
+                );
+              }
+            )}
+          </Grid>
+        </Grid>
+        <Grid item xs={4}>
+          <Box>
+            <Typography>Get in Touch</Typography>
+          </Box>
+        </Grid>
+      </Grid>
+    </Box>
+  );
+};
+
+export default Footer;
+
+{
+  /* <div className={styles.wrapper}>
       <div className={styles.header}>
         
         <div className={styles.logo}>
@@ -35,8 +71,5 @@ const Footer: React.FC = ()=>{
         <h3>022 405 5543</h3>
         <h3>resourcezen@gmail.com</h3>
       </div>
-    </div>
-  );
+    </div> */
 }
-
-export default Footer;
