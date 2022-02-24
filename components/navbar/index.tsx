@@ -1,11 +1,5 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import styles from './navbar.module.scss';
-import rzLogo from '../../assets/images/RZLogo.png';
+import DrawerComponent from '../drawer';
 
-/*
-    MUI
-*/
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,70 +9,103 @@ import Container from '@mui/material/Container';
 
 const pages = ['Home', 'About', 'Roadmap', 'Pricing', 'Contact Us'];
 
-/*
-    Tabs
-*/
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 
 import Button from '@mui/material/Button';
+import { useRouter } from 'next/router';
+import { useMediaQuery, useTheme } from '@mui/material';
 
 const Navbar: React.FC = () => {
-  /*
-  Tabs tings
-*/
+  const theme = useTheme();
+  const router = useRouter();
+  const isMatch = useMediaQuery(theme.breakpoints.down('md'));
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    console.log(newValue);
+    switch (newValue) {
+      case 0:
+        router.push('/');
+        break;
+      case 1:
+        router.push('/about');
+        break;
+      case 2:
+        router.push('/roadmap');
+        break;
+      case 3:
+        router.push('/pricing');
+        break;
+      case 4:
+        router.push('/contact');
+        break;
+    }
     setValue(newValue);
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" elevation={0}>
       <Container maxWidth="xl">
         <Toolbar
           disableGutters
           sx={{
-            border: '1px solid green',
+            border: 'none',
           }}
         >
           <Box
             sx={{
-              border: '1px solid green',
+              border: 'none',
               width: '25%',
             }}
           >
-            <Typography>Resource Zen</Typography>
+            <Typography variant="h3">Resource Zen</Typography>
           </Box>
-          <Box
-            sx={{
-              width: '100%',
-              border: '1px solid green',
-            }}
-          >
-            <Tabs
-              value={value}
-              onChange={handleChange}
-              textColor="secondary"
-              indicatorColor="secondary"
-              centered
-            >
-              {pages.map((page) => {
-                return <Tab value={page} label={page} key={page} />;
-              })}
-            </Tabs>
-          </Box>
-          <Box
-            sx={{
-              border: '1px solid green',
-              width: '15%',
-            }}
-          >
-            <Button variant="text" sx={{ color: 'white' }}>
-              Sign Up
-            </Button>
-            <Button variant="contained">Sign In</Button>
-          </Box>
+          {!isMatch && (
+            <>
+              <Box
+                sx={{
+                  width: '100%',
+                  border: 'none',
+                }}
+              >
+                <Tabs
+                  value={value}
+                  onChange={handleChange}
+                  textColor="secondary"
+                  indicatorColor="secondary"
+                  centered
+                  TabIndicatorProps={{
+                    style: { visibility: 'hidden' },
+                  }}
+                  sx={{ '.Mui-selected': {} }}
+                >
+                  {pages.map((page, index) => {
+                    return (
+                      <Tab
+                        value={index}
+                        label={page}
+                        key={page}
+                        sx={{ fontFamily: 'Poppins' }}
+                      />
+                    );
+                  })}
+                </Tabs>
+              </Box>
+              <Box
+                sx={{
+                  border: 'none',
+                  width: '15%',
+                }}
+              >
+                <Button variant="text" sx={{ color: 'black' }}>
+                  Sign Up
+                </Button>
+                <Button variant="contained">Sign In</Button>
+              </Box>
+            </>
+          )}
+          {isMatch && <DrawerComponent></DrawerComponent>}
         </Toolbar>
       </Container>
     </AppBar>

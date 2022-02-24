@@ -1,78 +1,55 @@
-import { createTheme, responsiveFontSizes } from "@mui/material/styles";
+import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
   palette: {
-    background: {
-      paper: "#1b2330",
-      default: "#0d1218",
-    },
     primary: {
-      main: "rgba(2, 106, 167, 1)",
-      contrastText: "#fff",
+      main: '#ffffff',
     },
     secondary: {
-      main: "rgba(78, 151, 194, 1)",
-      contrastText: "#fff",
-    },
-    error: {
-      main: "#f44336",
-      contrastText: "#fff",
+      main: '#6295d2',
     },
     text: {
-      primary: "#fff",
-      secondary: "rgba(255, 255, 255, 0.7)",
-      disabled: "rgba(255, 255, 255, 0.38)",
+      secondary: '#506c94',
+    },
+    error: {
+      main: '#e0635c',
     },
   },
   typography: {
-    button: {
-      textTransform: "none",
-    },
-    fontFamily: [
-      "Inter",
-      "ui-sans-serif",
-      "system-ui",
-      "-apple-system",
-      "BlinkMacSystemFont",
-      "Segoe UI",
-      "Roboto",
-      "Helvetica Neue",
-      "Arial",
-      "Noto Sans",
-      "sans-serif",
-      "Apple Color Emoji",
-      "Segoe UI Emoji",
-      "Segoe UI Symbol",
-      "Noto Color Emoji",
-    ].join(","),
+    fontFamily: ['Space Grotesk', 'sans-serif', 'Poppins'].join(','),
+    fontWeightLight: 1000,
+    fontWeightRegular: 1000,
+    fontWeightMedium: 1000,
+    fontWeightBold: 1000,
     h1: {
-      fontSize: "4rem",
+      fontFamily: 'Space Grotesk',
+      fontSize: '3.8em',
       fontWeight: 700,
-      lineHeight: 1,
-      color: "#fff",
+      lineHeight: 1.46,
     },
     h2: {
-      letterSpacing: "-.025em",
+      fontFamily: 'Space Grotesk',
+      fontSize: '3.5em',
       fontWeight: 700,
-      fontSize: "2.25rem",
-      lineHeight: 2.5,
-      color: "#fff",
+      lineHeight: 1.27,
     },
     h3: {
-      color: "#fff",
-      fontWeight: 500,
-      fontSize: "1.25rem",
-      lineHeight: 1.75,
+      fontFamily: 'Space Grotesk',
+      fontSize: '1.8rem',
+      fontWeight: 700,
     },
-    body1: {
-      fontSize: "1rem",
-      lineHeight: 1.75,
-      color: "#d1d5db",
+    h4: {
+      fontFamily: 'Space Grotesk',
+      fontWeight: 700,
     },
-    body2: {
-      fontSize: "1rem",
-      lineHeight: 1.75,
-      color: "#9CA3AF",
+  },
+  components: {
+    // Name of the component
+    MuiButtonBase: {
+      defaultProps: {
+        // The props to change the default for.
+        disableRipple: false, // No more ripple!
+      },
     },
   },
 });
