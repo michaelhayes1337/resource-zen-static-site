@@ -1,3 +1,4 @@
+import type {} from '@mui/lab/themeAugmentation';
 import { createTheme, responsiveFontSizes } from '@mui/material/styles';
 
 const theme = createTheme({
@@ -49,6 +50,9 @@ const theme = createTheme({
       defaultProps: {
         // The props to change the default for.
         disableRipple: false, // No more ripple!
+      },
+      styleOverrides: {
+        root: {},
       },
     },
   },

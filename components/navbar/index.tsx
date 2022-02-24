@@ -1,13 +1,13 @@
 import DrawerComponent from '../drawer';
-
+import LogoIcon from '../../assets/icons/logoIcon';
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
-
 const pages = ['Home', 'About', 'Roadmap', 'Pricing', 'Contact Us'];
+
+// import colorList from '../../styles/colorList';
 
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -19,11 +19,11 @@ import { useMediaQuery, useTheme } from '@mui/material';
 const Navbar: React.FC = () => {
   const theme = useTheme();
   const router = useRouter();
-  const isMatch = useMediaQuery(theme.breakpoints.down('md'));
+  const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
   const [value, setValue] = React.useState(0);
 
+  // console.log(colorList);
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    console.log(newValue);
     switch (newValue) {
       case 0:
         router.push('/');
@@ -56,17 +56,20 @@ const Navbar: React.FC = () => {
           <Box
             sx={{
               border: 'none',
-              width: '25%',
+              width: '15%',
             }}
           >
-            <Typography variant="h3">Resource Zen</Typography>
+            <LogoIcon></LogoIcon>
           </Box>
           {!isMatch && (
             <>
               <Box
                 sx={{
-                  width: '100%',
+                  width: 'auto',
                   border: 'none',
+                  marginTop: '1%',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
                 }}
               >
                 <Tabs
@@ -78,7 +81,9 @@ const Navbar: React.FC = () => {
                   TabIndicatorProps={{
                     style: { visibility: 'hidden' },
                   }}
-                  sx={{ '.Mui-selected': {} }}
+                  sx={{
+                    '.Mui-selected': { color: '#506C94' },
+                  }}
                 >
                   {pages.map((page, index) => {
                     return (
@@ -86,7 +91,12 @@ const Navbar: React.FC = () => {
                         value={index}
                         label={page}
                         key={page}
-                        sx={{ fontFamily: 'Poppins' }}
+                        sx={{
+                          fontFamily: 'Poppins',
+                          color: 'black',
+                          fontWeight: '700',
+                          textTransform: 'none',
+                        }}
                       />
                     );
                   })}
@@ -96,12 +106,31 @@ const Navbar: React.FC = () => {
                 sx={{
                   border: 'none',
                   width: '15%',
+                  marginTop: '1%',
                 }}
               >
-                <Button variant="text" sx={{ color: 'black' }}>
+                <Button
+                  variant="text"
+                  sx={{
+                    fontFamily: 'Poppins',
+                    color: 'black',
+                    fontWeight: '400',
+                    textTransform: 'none',
+                  }}
+                >
                   Sign Up
                 </Button>
-                <Button variant="contained">Sign In</Button>
+                <Button
+                  variant="contained"
+                  color="secondary"
+                  sx={{
+                    fontFamily: 'Poppins',
+                    fontWeight: '400',
+                    textTransform: 'none',
+                  }}
+                >
+                  Sign In
+                </Button>
               </Box>
             </>
           )}
