@@ -7,6 +7,8 @@ import {
   IconButton,
   Divider,
 } from '@mui/material';
+import { useContext } from 'react';
+import ctx from '../../utility/navbarContext';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
 type Props = {
@@ -15,6 +17,7 @@ type Props = {
 
 const DrawerComponent = (props: Props) => {
   const [open, setOpen] = useState(false);
+  const navbarCTX = useContext(ctx);
   const mapNameToRoute = (name: string) => {
     let route = '/';
     switch (name) {
@@ -34,7 +37,7 @@ const DrawerComponent = (props: Props) => {
         route = '/contact';
         break;
       case 'Sign In':
-        route = '/signup';
+        route = '/signin';
         break;
       case 'Sign Up':
         route = '/signup';
@@ -51,23 +54,39 @@ const DrawerComponent = (props: Props) => {
         anchor="right"
       >
         <List sx={{ width: '200px' }}>
-          {['Home', 'About', 'Roadmap', 'Pricing', 'Contact'].map((name) => {
-            return (
-              <Link href={mapNameToRoute(name)} key={name}>
-                <ListItemButton>
-                  <ListItemText primary={name} sx={{ textAlign: 'right' }} />
-                </ListItemButton>
-              </Link>
-            );
-          })}
+          {['Home', 'About', 'Roadmap', 'Pricing', 'Contact Us'].map(
+            (name, index) => {
+              const isNavigated = index === navbarCTX?.selected;
+              return (
+                <Link href={mapNameToRoute(name)} key={name}>
+                  <ListItemButton>
+                    <ListItemText
+                      primary={name}
+                      sx={{
+                        textAlign: 'right',
+                        color: isNavigated ? '#506C94' : 'black',
+                      }}
+                    />
+                  </ListItemButton>
+                </Link>
+              );
+            }
+          )}
         </List>
         <Divider />
         <List sx={{ width: '200px' }}>
-          {['Sign In', 'Sign Up'].map((name) => {
+          {['Sign Up', 'Sign In'].map((name, index) => {
+            const isNavigated = index === navbarCTX!.selected! - 5;
             return (
               <Link href={mapNameToRoute(name)} key={name}>
                 <ListItemButton>
-                  <ListItemText primary={name} sx={{ textAlign: 'right' }} />
+                  <ListItemText
+                    primary={name}
+                    sx={{
+                      textAlign: 'right',
+                      color: isNavigated ? '#506C94' : 'black',
+                    }}
+                  />
                 </ListItemButton>
               </Link>
             );
