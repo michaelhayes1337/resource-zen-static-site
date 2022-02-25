@@ -1,16 +1,15 @@
 import React from 'react';
 import Navbar from '../navbar';
 import Footer from '../footer';
-const Layout: React.FC =({children})=> {
+import { NavbarContextProvider } from 'utility/navbarContext';
+const Layout: React.FC = ({ children }) => {
   return (
-      <>
-        <Navbar/>
-            <main>
-                {children}
-            </main>
-        <Footer/>
-      </>
+    <NavbarContextProvider>
+      <Navbar />
+      <main>{children}</main>
+      <Footer />
+    </NavbarContextProvider>
   );
-}
+};
 
 export default Layout;

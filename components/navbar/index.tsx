@@ -1,12 +1,14 @@
 import DrawerComponent from '../drawer';
 import LogoIcon from '../../assets/icons/logoIcon';
 import * as React from 'react';
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 const pages = ['Home', 'About', 'Roadmap', 'Pricing', 'Contact Us'];
-
+import { useContext } from 'react';
+import ctx from '../../utility/navbarContext';
 // import colorList from '../../styles/colorList';
 
 import Tabs from '@mui/material/Tabs';
@@ -20,9 +22,35 @@ const Navbar: React.FC = () => {
   const theme = useTheme();
   const router = useRouter();
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
-  const [value, setValue] = React.useState(0);
+  // const [value, setValue] = React.useState(0);
 
+  const navbarCTX = useContext(ctx);
   // console.log(colorList);
+
+  // useEffect(() => {
+  //   switch (router.asPath) {
+  //     case '/':
+  //       setValue(0);
+  //       break;
+  //     case '/about':
+  //       setValue(1);
+  //       break;
+  //     case '/roadmap':
+  //       setValue(2);
+  //       break;
+  //     case '/pricing':
+  //       setValue(3);
+  //       break;
+  //     case '/contact':
+  //       setValue(4);
+  //       break;
+  //     default:
+  //       // not a page on the navigation bar
+  //       setValue(-1);
+  //       break;
+  //   }
+  // }, [router.asPath]);
+
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     switch (newValue) {
       case 0:
@@ -41,7 +69,8 @@ const Navbar: React.FC = () => {
         router.push('/contact');
         break;
     }
-    setValue(newValue);
+    // setValue(newValue);
+    // navbarCTX?.setSelected(newValue);
   };
 
   return (
@@ -73,7 +102,7 @@ const Navbar: React.FC = () => {
                 }}
               >
                 <Tabs
-                  value={value}
+                  value={navbarCTX?.selected}
                   onChange={handleChange}
                   textColor="secondary"
                   indicatorColor="secondary"
@@ -111,6 +140,9 @@ const Navbar: React.FC = () => {
               >
                 <Button
                   variant="text"
+                  onClick={() => {
+                    router.push('/signup');
+                  }}
                   sx={{
                     fontFamily: 'Poppins',
                     color: 'black',
@@ -127,6 +159,9 @@ const Navbar: React.FC = () => {
                     fontFamily: 'Poppins',
                     fontWeight: '400',
                     textTransform: 'none',
+                  }}
+                  onClick={() => {
+                    router.push('/signup');
                   }}
                 >
                   Sign In

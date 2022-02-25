@@ -1,38 +1,123 @@
 import React from 'react';
+import { useContext } from 'react';
+import ctx from '../../utility/navbarContext';
 import { Box, Grid, Typography } from '@mui/material';
 import LogoIcon from '../../assets/icons/logoIcon';
+import Link from 'next/link';
+import Button from '@mui/material/Button';
+
 const Footer: React.FC = () => {
+  const navbarCTX = useContext(ctx);
+  const mapNameToRoute = (name: string) => {
+    let route = '/';
+    switch (name) {
+      case 'Home':
+        route = '/';
+        break;
+      case 'About':
+        route = '/about';
+        break;
+      case 'Roadmap':
+        route = '/roadmap';
+        break;
+      case 'Pricing':
+        route = '/pricing';
+        break;
+      case 'Contact Us':
+        route = '/contact';
+        break;
+    }
+    return route;
+  };
   return (
     <Box
       sx={{
-        border: '1px solid red',
-        height: '30vh',
+        height: 'auto',
         backgroundColor: '#E2EFFF',
       }}
     >
-      <Grid container spacing={2}>
-        <Grid item xs={4}>
+      <Grid container spacing={1}>
+        <Grid
+          item
+          xs={12}
+          md={4}
+          sx={{ display: 'grid', placeItems: 'center', height: '100%' }}
+        >
           <LogoIcon></LogoIcon>
-          <Typography variant="h6">CopyWrite Text Here</Typography>
+          <Typography variant="subtitle1" sx={{ color: 'rgba(0,0,0,0.5)' }}>
+            CopyWrite Text Here
+          </Typography>
         </Grid>
-        <Grid item xs={4}>
-          <Typography>Links</Typography>
-          <Grid container spacing={2}>
+        <Grid
+          item
+          xs={12}
+          md={4}
+          sx={{ display: 'grid', placeItems: 'center' }}
+        >
+          <Typography
+            variant="h3"
+            sx={{ width: '100%', marginBottom: '3%', marginTop: '6%' }}
+          >
+            Links
+          </Typography>
+          <Grid container spacing={1}>
             {['Home', 'About', 'Roadmap', 'Pricing', 'Contact Us'].map(
-              (page) => {
+              (page, index) => {
+                const isNaviagted = index === navbarCTX?.selected;
                 return (
                   <Grid item xs={6} key={page}>
-                    <Typography>page</Typography>
+                    <Link href={mapNameToRoute(page)}>
+                      <Button
+                        variant="text"
+                        sx={{
+                          fontFamily: 'Poppins',
+                          color: isNaviagted ? '#49B295' : 'black',
+                          fontWeight: isNaviagted ? '700' : '400',
+                          textTransform: 'none',
+                        }}
+                      >
+                        {page}
+                      </Button>
+                    </Link>
                   </Grid>
                 );
               }
             )}
           </Grid>
         </Grid>
-        <Grid item xs={4}>
-          <Box>
-            <Typography>Get in Touch</Typography>
-          </Box>
+        <Grid
+          item
+          xs={12}
+          md={4}
+          sx={{ display: 'grid', placeItems: 'center' }}
+        >
+          <Typography
+            variant="h3"
+            sx={{ width: '100%', marginBottom: '0%', marginTop: '1%' }}
+          >
+            Get In Touch
+          </Typography>
+          <Grid container spacing={1}>
+            {['022 405 5543', 'resourezen@gmail.com'].map((page, index) => {
+              return (
+                <Grid item xs={12} key={page}>
+                  <Link href="/contact">
+                    <Button
+                      variant="text"
+                      sx={{
+                        fontFamily: 'Poppins',
+                        color: 'black',
+                        fontWeight: '400',
+                        textTransform: 'none',
+                      }}
+                    >
+                      {page}
+                    </Button>
+                  </Link>
+                </Grid>
+              );
+            })}
+          </Grid>
         </Grid>
       </Grid>
     </Box>
@@ -40,36 +125,3 @@ const Footer: React.FC = () => {
 };
 
 export default Footer;
-
-{
-  /* <div className={styles.wrapper}>
-      <div className={styles.header}>
-        
-        <div className={styles.logo}>
-          <Image
-            src={rzLogo}
-            alt="leaf and gear logo"
-            width={120}
-            height={120}
-          />
-        </div>
-        <h2>Resource Zen</h2>
-        <h3>Copywrite text here</h3>
-      </div>
-      <div className={styles.links}>
-        <h2>Links</h2>
-        <div className={styles.linksGrid}>
-          <h3>Home</h3>
-          <h3>Pricing</h3>
-          <h3>About</h3>
-          <h3>Contact Us</h3>
-          <h3>Roadmap</h3>
-        </div>
-      </div>
-      <div className={styles.getInTouch}>
-        <h2>Get in Touch</h2>
-        <h3>022 405 5543</h3>
-        <h3>resourcezen@gmail.com</h3>
-      </div>
-    </div> */
-}
