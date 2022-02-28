@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
-type Props = {};
-
-const JobcardIcon = (props: Props) => {
+const JobcardIcon = (props: SvgIconProps) => {
   return (
     <>
-      <svg
+      <SvgIcon
         width="229"
         height="229"
         viewBox="0 0 229 229"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        {...props}
       >
         <g clipPath="url(#clip0_364_2348)">
           <g filter="url(#filter0_d_364_2348)">
@@ -104,7 +104,7 @@ const JobcardIcon = (props: Props) => {
             <rect width="228.261" height="229" fill="white" />
           </clipPath>
         </defs>
-      </svg>
+      </SvgIcon>
     </>
   );
 };
