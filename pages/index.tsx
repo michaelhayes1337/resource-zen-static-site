@@ -65,12 +65,22 @@ const Home: React.FC = () => {
       }}
     >
       <BlobBackground
-        sx={{
-          position: 'absolute',
-          zIndex: '-20',
-          width: '200%',
-          left: '-50%',
-        }}
+        sx={
+          isMatch
+            ? {
+                position: 'absolute',
+                zIndex: '-20',
+                width: '200%',
+                left: '-50%',
+                top: '10%',
+              }
+            : {
+                position: 'absolute',
+                zIndex: '-20',
+                width: '200%',
+                left: '-50%',
+              }
+        }
       ></BlobBackground>
 
       <Container
