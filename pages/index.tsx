@@ -24,6 +24,7 @@ import {
   IconButton,
 } from '@mui/material';
 
+import { useMediaQuery, useTheme } from '@mui/material';
 type Props = {
   sx?: {};
 };
@@ -49,13 +50,18 @@ const services: Service[] = [
 ];
 
 const Home: React.FC = () => {
+  const theme = useTheme();
+  const isMatch = useMediaQuery(theme.breakpoints.down('md'));
   return (
-    <div
-      className="div"
-      style={{
+    <Box
+      sx={{
         position: 'relative',
         overflow: 'visible',
         width: '100%',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
       }}
     >
       <BlobBackground
@@ -66,14 +72,7 @@ const Home: React.FC = () => {
           left: '-50%',
         }}
       ></BlobBackground>
-      <LandingArt
-        sx={{
-          position: 'absolute',
-          zIndex: '-10',
-          right: '0%',
-          top: '15%',
-        }}
-      ></LandingArt>
+
       <Container
         maxWidth="xl"
         sx={{ position: 'relative', overflow: 'visible' }}
@@ -82,9 +81,20 @@ const Home: React.FC = () => {
           <title key="title">Resource Zen</title>
         </Head>
 
-        <Box sx={{ marginBottom: '40vh', marginTop: '5vh', width: '48%' }}>
+        <Box
+          sx={{
+            marginBottom: isMatch ? '1vh' : '40vh',
+            marginTop: '5vh',
+            width: isMatch ? '100%' : '48%',
+            margin: isMatch ? '0 auto' : '',
+            display: isMatch ? 'grid' : '',
+            placeContent: 'center',
+          }}
+        >
           <Typography variant="h2">
-            Let Resource Zen make life easier for you.
+            Let <span style={{ color: '#49b295' }}>Resource</span>{' '}
+            <span style={{ color: '#6295D2' }}>Zen</span> make life easier for
+            you.
           </Typography>
           <Typography variant="subtitle1">
             We help you customise your business resources such as, job cards,
@@ -102,7 +112,17 @@ const Home: React.FC = () => {
           >
             <Typography variant="h3">GET STARTED</Typography>
           </Button>
-          <Box>
+          <Box
+            sx={
+              isMatch
+                ? {
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }
+                : {}
+            }
+          >
             <IconButton>
               <FacebookSocial />
             </IconButton>
@@ -117,9 +137,19 @@ const Home: React.FC = () => {
             </IconButton>
           </Box>
         </Box>
+        <LandingArt
+          sx={{
+            position: isMatch ? 'relative' : 'absolute',
+            zIndex: '-10',
+            right: '0%',
+            top: '0%',
+            fontSize: isMatch ? '50rem' : '80em',
+            maxWidth: '100%',
+          }}
+        ></LandingArt>
         <Box
           sx={{
-            marginTop: '60vh',
+            marginTop: isMatch ? '1vh' : '60vh',
             display: 'grid',
             placeItems: 'center',
             width: '100%',
@@ -151,22 +181,36 @@ const Home: React.FC = () => {
             }}
           >
             {services.map((service, index) => {
+              const iconStyling = {
+                fontSize: 200,
+              };
               return (
-                <Grid item xs={4} key={service.title} sx={{ border: 'none' }}>
+                <Grid
+                  item
+                  md={4}
+                  xs={12}
+                  key={service.title}
+                  sx={{
+                    border: 'none',
+                    display: 'grid',
+                    placeItems: 'center',
+                  }}
+                >
                   <Paper
                     sx={{
                       display: 'grid',
                       placeItems: 'center',
+                      minHeight: 'fit-content',
                       height: '45vh',
                       width: '90%',
                     }}
                   >
                     {index === 0 ? (
-                      <JobcardIcon />
+                      <JobcardIcon sx={iconStyling} />
                     ) : index === 1 ? (
-                      <InvoiceIcon />
+                      <InvoiceIcon sx={iconStyling} />
                     ) : (
-                      <StockIcon />
+                      <StockIcon sx={iconStyling} />
                     )}
                     <Typography variant="h4" sx={{ fontFamily: 'Poppins' }}>
                       {service.title}
@@ -183,7 +227,7 @@ const Home: React.FC = () => {
           </Grid>
         </Box>
       </Container>
-    </div>
+    </Box>
   );
 };
 

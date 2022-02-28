@@ -1,18 +1,18 @@
 import React from 'react';
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
+// type Props = {
+//   sx?: {};
+// };
 
-type Props = {
-  sx?: {};
-};
-
-const LandingArt = (props: Props) => {
+const LandingArt = (props: SvgIconProps) => {
   return (
-    <svg
+    <SvgIcon
       width="1173"
       height="760"
       viewBox="0 0 1173 760"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      style={props.sx}
+      {...props}
     >
       <path
         d="M59.1806 146.429C64.2537 146.429 68.3663 142.108 68.3663 136.777C68.3663 131.447 64.2537 127.125 59.1806 127.125C54.1075 127.125 49.9949 131.447 49.9949 136.777C49.9949 142.108 54.1075 146.429 59.1806 146.429Z"
@@ -924,7 +924,7 @@ const LandingArt = (props: Props) => {
           <stop offset="1" stopColor="#3FC293" />
         </linearGradient>
       </defs>
-    </svg>
+    </SvgIcon>
   );
 };
 

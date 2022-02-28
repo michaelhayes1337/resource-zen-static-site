@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
+import SvgIcon, { SvgIconProps } from '@mui/material/SvgIcon';
 
-type Props = {};
-
-const StockIcon = (props: Props) => {
+const StockIcon = (props: SvgIconProps) => {
   return (
     <>
-      <svg
+      <SvgIcon
         width="248"
         height="249"
         viewBox="0 0 248 249"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        {...props}
       >
         <g filter="url(#filter0_d_364_2354)">
           <path
@@ -59,7 +59,7 @@ const StockIcon = (props: Props) => {
             />
           </filter>
         </defs>
-      </svg>
+      </SvgIcon>
     </>
   );
 };
