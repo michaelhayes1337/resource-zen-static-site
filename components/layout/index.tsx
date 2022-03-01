@@ -5,9 +5,11 @@ import { NavbarContextProvider } from 'utility/navbarContext';
 const Layout: React.FC = ({ children }) => {
   return (
     <NavbarContextProvider>
-      <Navbar />
-      <main>{children}</main>
-      <Footer />
+      <div className="wrapper" style={{ overflow: 'hidden' }}>
+        <Navbar />
+        <main>{children}</main>
+        <Footer />
+      </div>
     </NavbarContextProvider>
   );
 };
