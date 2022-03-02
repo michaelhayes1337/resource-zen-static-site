@@ -46,6 +46,9 @@ const About = (props: Props) => {
   );
   return (
     <Container maxWidth="xl" sx={{ position: 'relative', overflow: 'visible' }}>
+      <Head>
+        <title key="title">About</title>
+      </Head>
       <BlobBackground
         sx={
           isMatch
