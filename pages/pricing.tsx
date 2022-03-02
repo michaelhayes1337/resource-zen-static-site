@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Head from 'next/head';
 import {
   Container,
-  Box,
   Typography,
   useMediaQuery,
   useTheme,
@@ -46,6 +45,11 @@ const Pricing = (props: Props) => {
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
   const [selected, setSelected] = useState('2');
   const [cards, setCards] = useState(cardsData);
+  // useEffect(() => {
+  //   if (isMatch) {
+  //     setSelected('2');
+  //   }
+  // }, [isMatch]);
 
   function compare(a, b) {
     if (a.id < b.id) {
@@ -58,24 +62,34 @@ const Pricing = (props: Props) => {
   }
 
   const changeSelected: (str: string) => void = (selectedID) => {
-    setSelected(selectedID);
-    const onlySelected = cards.filter((card) => {
-      return card.id === selectedID;
-    });
-    const onlyUnselected = cards.filter((card) => {
-      return card.id !== selectedID;
-    });
-    onlyUnselected.sort(compare);
-    const tempSelected = isMatch
-      ? [onlySelected[0], onlyUnselected[0], onlyUnselected[1]]
-      : [onlyUnselected[0], onlySelected[0], onlyUnselected[1]];
-    setCards(tempSelected.slice());
+    if (!isMatch) {
+      setSelected(selectedID);
+      const onlySelected = cards.filter((card) => {
+        return card.id === selectedID;
+      });
+      const onlyUnselected = cards.filter((card) => {
+        return card.id !== selectedID;
+      });
+      onlyUnselected.sort(compare);
+      // const tempSelected = isMatch
+      //   ? [onlySelected[0], onlyUnselected[0], onlyUnselected[1]]
+      //   : [onlyUnselected[0], onlySelected[0], onlyUnselected[1]];
+      const tempSelected = [
+        onlyUnselected[0],
+        onlySelected[0],
+        onlyUnselected[1],
+      ];
+      setCards(tempSelected.slice());
+    }
   };
-  isMatch
-    ? changeSelected('1')
-    : () => {
-        // do nothing
-      };
+  const purchaseHandler = (id: string) => {
+    console.log('Purchase : ', id);
+  };
+  // isMatch
+  //   ? changeSelected('1')
+  //   : () => {
+  //       // do nothing
+  //     };
   // const dataSorted = [...cardsData];
   // [dataSorted[1], dataSorted[selected]] = [dataSorted[selected], dataSorted[1]];
   return (
@@ -106,11 +120,7 @@ const Pricing = (props: Props) => {
         <span style={{ color: '#49b295' }}>Resource</span>{' '}
         <span style={{ color: '#6295D2' }}>Zen</span> Pricing Plans
       </Typography>
-      <Grid
-        container
-        spacing={2}
-        sx={{ width: '80%', border: '1px solid red' }}
-      >
+      <Grid container spacing={2} sx={{ width: '80%' }}>
         {cards.map((card, index) => {
           const isMainCard = card.id === selected;
           const stylingPaper = isMainCard
@@ -118,7 +128,7 @@ const Pricing = (props: Props) => {
                 backgroundColor: '#5F9BE4',
                 border: '5px solid #E2EFFF',
                 width: isMatch ? '100%' : '120%',
-                height: isMatch ? '100%' : '110%',
+                height: isMatch ? '65vh' : '110%',
               }
             : {};
           const stylingGrid = isMainCard
@@ -186,7 +196,7 @@ const Pricing = (props: Props) => {
                 <Typography
                   variant="subtitle1"
                   textAlign="center"
-                  sx={{ fontFamily: 'Poppins' }}
+                  sx={{ fontFamily: 'Poppins', color: 'black' }}
                 >
                   R{card.content}
                 </Typography>
@@ -194,7 +204,7 @@ const Pricing = (props: Props) => {
                   variant="contained"
                   color="secondary"
                   sx={{ margin: 'auto 0', ...stylingButton }}
-                  onClick={changeSelected.bind(null, card.id)}
+                  onClick={purchaseHandler.bind(null, card.id)}
                 >
                   Purchase
                 </Button>
