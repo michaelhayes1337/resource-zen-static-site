@@ -19,6 +19,7 @@ import LocationIcon from '../assets/icons/locationIcon';
 import MobileIcon from '../assets/icons/mobileIcon';
 import BlobBackground from '../assets/backgrounds/blobBackground';
 import ContactForm from '../components/contactForm';
+import TestForm from '../components/testForm';
 type ContactDetail = {
   icon: (props: SvgIconProps) => JSX.Element;
   content: string;
@@ -125,6 +126,9 @@ const Contact = (props: Props) => {
         </Grid>
         <Grid item xs={6}>
           <ContactForm></ContactForm>
+        </Grid>
+        <Grid item xs={12}>
+          <TestForm></TestForm>
         </Grid>
       </Grid>
     </Container>
