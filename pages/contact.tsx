@@ -6,8 +6,6 @@ import {
   useMediaQuery,
   useTheme,
   Grid,
-  Paper,
-  Button,
   List,
   ListItemButton,
   ListItemIcon,
@@ -19,7 +17,6 @@ import LocationIcon from '../assets/icons/locationIcon';
 import MobileIcon from '../assets/icons/mobileIcon';
 import BlobBackground from '../assets/backgrounds/blobBackground';
 import ContactForm from '../components/contactForm';
-import TestForm from '../components/testForm';
 type ContactDetail = {
   icon: (props: SvgIconProps) => JSX.Element;
   content: string;
@@ -124,11 +121,8 @@ const Contact = (props: Props) => {
             })}
           </List>
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} sx={{ padding: '5% 5%' }}>
           <ContactForm></ContactForm>
-        </Grid>
-        <Grid item xs={12}>
-          <TestForm></TestForm>
         </Grid>
       </Grid>
     </Container>
