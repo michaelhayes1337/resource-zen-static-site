@@ -9,7 +9,6 @@ import {
   useTheme,
   Grid,
 } from '@mui/material';
-import BlobBackground from '../assets/backgrounds/blobBackground';
 type Props = {};
 
 const About = (props: Props) => {
@@ -49,24 +48,6 @@ const About = (props: Props) => {
       <Head>
         <title key="title">About</title>
       </Head>
-      <BlobBackground
-        sx={
-          isMatch
-            ? {
-                position: 'absolute',
-                zIndex: '-20',
-                width: '200%',
-                left: '-50%',
-                top: '10%',
-              }
-            : {
-                position: 'absolute',
-                zIndex: '-20',
-                width: '200%',
-                left: '-40%',
-              }
-        }
-      ></BlobBackground>
       <Grid container>
         {isMatch && (
           <>

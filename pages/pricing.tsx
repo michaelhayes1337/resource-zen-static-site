@@ -9,15 +9,14 @@ import {
   Paper,
   Button,
 } from '@mui/material';
-import BlobBackground from '../assets/backgrounds/blobBackground';
 type Props = {};
-type Card = {
+type Plan = {
   id: string;
   name: string;
   price: number;
   content: string;
 };
-const cardsData: Card[] = [
+const planData: Plan[] = [
   {
     id: '1',
     name: 'Plan1',
@@ -44,14 +43,10 @@ const Pricing = (props: Props) => {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
   const [selected, setSelected] = useState('2');
-  const [cards, setCards] = useState(cardsData);
-  // useEffect(() => {
-  //   if (isMatch) {
-  //     setSelected('2');
-  //   }
-  // }, [isMatch]);
+  const [plans, setPlans] = useState(planData);
 
-  function compare(a, b) {
+  // Compare plan ids, used to order unselected plans
+  function compare(a: Plan, b: Plan) {
     if (a.id < b.id) {
       return -1;
     }
@@ -62,67 +57,44 @@ const Pricing = (props: Props) => {
   }
 
   const changeSelected: (str: string) => void = (selectedID) => {
+    // isMatch checks if we are on mobile
+    // if we are on mobile we shouldnt do anything
     if (!isMatch) {
+      // I was kinda tired when i did this so i dont really remember much, my bad will refactor at some point
       setSelected(selectedID);
-      const onlySelected = cards.filter((card) => {
-        return card.id === selectedID;
+      const onlySelected = plans.filter((plan) => {
+        return plan.id === selectedID;
       });
-      const onlyUnselected = cards.filter((card) => {
-        return card.id !== selectedID;
+      const onlyUnselected = plans.filter((plan) => {
+        return plan.id !== selectedID;
       });
       onlyUnselected.sort(compare);
-      // const tempSelected = isMatch
-      //   ? [onlySelected[0], onlyUnselected[0], onlyUnselected[1]]
-      //   : [onlyUnselected[0], onlySelected[0], onlyUnselected[1]];
       const tempSelected = [
         onlyUnselected[0],
         onlySelected[0],
         onlyUnselected[1],
       ];
-      setCards(tempSelected.slice());
+      setPlans(tempSelected.slice());
     }
   };
+  // Button handler functionality TODO
   const purchaseHandler = (id: string) => {
     console.log('Purchase : ', id);
   };
-  // isMatch
-  //   ? changeSelected('1')
-  //   : () => {
-  //       // do nothing
-  //     };
-  // const dataSorted = [...cardsData];
-  // [dataSorted[1], dataSorted[selected]] = [dataSorted[selected], dataSorted[1]];
+
   return (
     <Container maxWidth="xl" sx={{ display: 'grid', placeItems: 'center' }}>
       <Head>
         <title key="title">Pricing</title>
       </Head>
-      <BlobBackground
-        sx={
-          isMatch
-            ? {
-                position: 'absolute',
-                zIndex: '-20',
-                width: '110%',
-                right: '-10%',
-                top: '10%',
-              }
-            : {
-                position: 'absolute',
-                zIndex: '-20',
-                width: '110%',
-                right: '-10%',
-                top: '0%',
-              }
-        }
-      ></BlobBackground>
       <Typography variant="h2" sx={{ marginBottom: '10vh' }}>
         <span style={{ color: '#49b295' }}>Resource</span>{' '}
         <span style={{ color: '#6295D2' }}>Zen</span> Pricing Plans
       </Typography>
       <Grid container spacing={2} sx={{ width: '80%' }}>
-        {cards.map((card, index) => {
-          const isMainCard = card.id === selected;
+        {plans.map((plan, index) => {
+          // This is probably not the best way to do this :)
+          const isMainCard = plan.id === selected;
           const stylingPaper = isMainCard
             ? {
                 backgroundColor: '#5F9BE4',
@@ -150,9 +122,9 @@ const Pricing = (props: Props) => {
               }
             : {};
           return (
-            <Grid item xs={12} lg={4} key={card.name} sx={{ ...stylingGrid }}>
+            <Grid item xs={12} lg={4} key={plan.name} sx={{ ...stylingGrid }}>
               <Paper
-                onClick={changeSelected.bind(null, card.id)}
+                onClick={changeSelected.bind(null, plan.id)}
                 color="secondary"
                 style={{
                   border: '5px solid #5f9be4',
@@ -172,14 +144,14 @@ const Pricing = (props: Props) => {
                   textAlign="center"
                   sx={{ fontFamily: 'Poppins', ...stylingFonts }}
                 >
-                  {card.name}
+                  {plan.name}
                 </Typography>
                 <Typography
                   variant="h2"
                   textAlign="center"
                   sx={{ fontFamily: 'Poppins' }}
                 >
-                  R{card.price}
+                  R{plan.price}
                   <Typography
                     variant="subtitle1"
                     textAlign="center"
@@ -198,13 +170,13 @@ const Pricing = (props: Props) => {
                   textAlign="center"
                   sx={{ fontFamily: 'Poppins', color: 'black' }}
                 >
-                  R{card.content}
+                  R{plan.content}
                 </Typography>
                 <Button
                   variant="contained"
                   color="secondary"
                   sx={{ margin: 'auto 0', ...stylingButton }}
-                  onClick={purchaseHandler.bind(null, card.id)}
+                  onClick={purchaseHandler.bind(null, plan.id)}
                 >
                   Purchase
                 </Button>
@@ -217,42 +189,3 @@ const Pricing = (props: Props) => {
   );
 };
 export default Pricing;
-
-{
-  /* <div className="pricingPage">
-        <Head>
-          <title key="title">Pricing</title>
-        </Head>
-        <h1><span id='spanGreen'>Resource</span> <span id='spanBlue'>Zen&apos;s</span> Pricing Plans</h1>
-        <div className="pricingCards">
-            <div className="lower">
-                <div className="card">
-                    <h2>First Plan</h2>
-                    <h1>R100</h1>
-                    <p>Per Month</p>
-                    <br />
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident aut veritatis obcaecati ratione. Reprehenderit, alias rem enim laboriosam modi voluptatum voluptatibus voluptatem provident magnam repellendus! Aliquid a error et incidunt!</p>
-                    <button>Purchase</button>
-                </div>
-                <div className="card">
-                    <h2>First Plan</h2>
-                    <h1>R100</h1>
-                    <p>Per Month</p>
-                    <br />
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident aut veritatis obcaecati ratione. Reprehenderit, alias rem enim laboriosam modi voluptatum voluptatibus voluptatem provident magnam repellendus! Aliquid a error et incidunt!</p>
-                    <button>Purchase</button>
-                </div>
-            </div>
-            <div className="upper">
-            <div className="card">
-                    <h2>First Plan</h2>
-                    <h1>R100</h1>
-                    <p>Per Month</p>
-                    <br />
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident aut veritatis obcaecati ratione. Reprehenderit, alias rem enim laboriosam modi voluptatum voluptatibus voluptatem provident magnam repellendus! Aliquid a error et incidunt!</p>
-                    <button>Purchase</button>
-                </div>
-            </div>
-        </div>
-    </div> */
-}
