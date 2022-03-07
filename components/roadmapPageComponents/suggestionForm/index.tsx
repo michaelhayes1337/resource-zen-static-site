@@ -10,26 +10,24 @@ import {
   IconButton,
   Grid,
   Typography,
+  Box,
 } from '@mui/material';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import CancelOutlinedIcon from '@mui/icons-material/CancelOutlined';
 type Props = {};
 
-// Define inputs and their types for the form data handler
 interface IFormInput {
-  name: string;
-  number: string;
+  title: string;
   email: string;
-  message: string;
+  suggestion: string;
 }
 // Lets try avoid any spelling mistakes
 
 /* eslint-disable */
 enum InputFields {
-  NAME = 'name',
-  NUMBER = 'number',
+  TITLE = 'title',
   EMAIL = 'email',
-  MESSAGE = 'message',
+  SUGGESTION = 'suggestion',
 }
 /* eslint-enable */
 
@@ -50,39 +48,18 @@ type Input = {
 const inputData: Input[] = [
   // NAME
   {
-    id: InputFields.NAME,
-    label: 'Your name here',
-    placeholder: 'Please enter your name',
+    id: InputFields.TITLE,
+    label: 'Your title here',
+    placeholder: 'Please enter your title',
     rules: {
-      required: { value: true, message: 'Please enter a name' },
+      required: { value: true, message: 'Please enter a title' },
       minLength: {
         value: 3,
-        message: 'Please enter a name between 3-16 characters.',
+        message: 'Please enter a title between 3-16 characters.',
       },
       maxLength: {
         value: 16,
-        message: 'Please enter a username between 3-16 characters.',
-      },
-    },
-  },
-  // NUMBER
-  {
-    id: InputFields.NUMBER,
-    label: 'Your number here',
-    placeholder: 'Please enter your contact number',
-    rules: {
-      required: { value: true, message: 'Please enter a number' },
-      minLength: {
-        value: 10,
-        message: 'Enter a 10 digit number',
-      },
-      maxLength: {
-        value: 10,
-        message: 'Enter a 10 digit number',
-      },
-      pattern: {
-        value: /\d{10}/,
-        message: 'Invalid contact number format',
+        message: 'Please enter a title between 3-16 characters.',
       },
     },
   },
@@ -109,25 +86,24 @@ const inputData: Input[] = [
   },
   // MESSAGE
   {
-    id: InputFields.MESSAGE,
-    label: 'Your message here',
-    placeholder: 'Please enter your message',
+    id: InputFields.SUGGESTION,
+    label: 'Your suggestion here',
+    placeholder: 'Please enter your suggestion',
     rules: {
-      required: { value: true, message: 'Please enter a message' },
+      required: { value: true, message: 'Please enter a suggestion' },
       minLength: {
         value: 20,
-        message: 'This message is too short',
+        message: 'This suggestion is too short',
       },
       maxLength: {
         value: 500,
-        message: 'This message is too long',
+        message: 'This suggestion is too long',
       },
     },
     multi: true,
   },
 ];
-
-const testForm = (props: Props) => {
+const SuggestionForm = (props: Props) => {
   const {
     register, // add a field to form handler
     formState: { errors }, // get errorstate from form
@@ -138,16 +114,9 @@ const testForm = (props: Props) => {
   // check if there is an error state for a specific field and if there is return the error message
   const checkForError = (field: InputFields) => {
     switch (field) {
-      case InputFields.NAME:
-        if (errors.name) {
-          return errors.name.message;
-        } else {
-          return false;
-        }
-        break;
-      case InputFields.NUMBER:
-        if (errors.number) {
-          return errors.number.message;
+      case InputFields.TITLE:
+        if (errors.title) {
+          return errors.title.message;
         } else {
           return false;
         }
@@ -159,9 +128,9 @@ const testForm = (props: Props) => {
           return false;
         }
         break;
-      case InputFields.MESSAGE:
-        if (errors.message) {
-          return errors.message.message;
+      case InputFields.SUGGESTION:
+        if (errors.suggestion) {
+          return errors.suggestion.message;
         } else {
           return false;
         }
@@ -171,9 +140,6 @@ const testForm = (props: Props) => {
         break;
     }
   };
-
-  // TODO add api call
-
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log('DATA FROM FORM', data);
   };
@@ -184,22 +150,20 @@ const testForm = (props: Props) => {
       onSubmit={handleSubmit(onSubmit)}
       autoComplete="off"
       style={{
-        border: '5px solid #E2EFFF',
-        borderRadius: '50px',
-        backgroundColor: 'white',
-        padding: '5% 10%',
+        border: '1px solid red',
       }}
     >
-      <Grid container spacing={0}>
-        <Grid item xs={12} sx={{ display: 'grid', placeContent: 'center' }}>
-          <Typography variant="h3" sx={{ color: '#5F9BE4' }}>
-            Get in Touch
-          </Typography>
-        </Grid>
+      <Typography variant="h4" sx={{ marginBottom: '5vh' }}>
+        Do you have a feature in mind for
+        <span style={{ color: '#49b295' }}>Resource</span>{' '}
+        <span style={{ color: '#6295D2' }}>Zen</span> ?
+      </Typography>
+      <Grid container spacing={2}>
         {inputData.map((input) => {
           const errorMessage = checkForError(input.id);
+          const sizeOfInput = input.id === InputFields.SUGGESTION ? 12 : 6;
           return (
-            <Grid item xs={12} key={input.id} sx={{ width: '100%' }}>
+            <Grid item xs={sizeOfInput} key={input.id} sx={{ width: '100%' }}>
               <Typography
                 variant="subtitle1"
                 sx={{
@@ -256,16 +220,17 @@ const testForm = (props: Props) => {
             </Grid>
           );
         })}
-        <Button
-          type="submit"
-          fullWidth
-          sx={{ backgroundColor: '#5F9BE4', marginTop: '5%' }}
-        >
+      </Grid>
+      <Box>
+        <Button variant="contained" type="submit">
           submit
         </Button>
-      </Grid>
+        <Button variant="text" type="submit" color="secondary">
+          Click here to Login
+        </Button>
+      </Box>
     </form>
   );
 };
 
-export default testForm;
+export default SuggestionForm;
