@@ -98,7 +98,7 @@ const Pricing = (props: Props) => {
           const stylingPaper = isMainCard
             ? {
                 backgroundColor: '#5F9BE4',
-                border: '5px solid #E2EFFF',
+                border: '10px solid #E2EFFF',
                 width: isMatch ? '100%' : '120%',
                 height: isMatch ? '65vh' : '110%',
               }
@@ -127,10 +127,10 @@ const Pricing = (props: Props) => {
                 onClick={changeSelected.bind(null, plan.id)}
                 color="secondary"
                 style={{
-                  border: '5px solid #5f9be4',
+                  border: '10px solid #5f9be4',
                   backgroundColor: '#E2EFFF',
                   borderRadius: '50px',
-                  height: '65vh',
+                  height: '80vh',
                   padding: '20px',
                   display: 'grid',
                   placeItems: 'center',
@@ -140,14 +140,14 @@ const Pricing = (props: Props) => {
                 elevation={isMainCard ? 20 : 0}
               >
                 <Typography
-                  variant="h4"
+                  variant="h3"
                   textAlign="center"
                   sx={{ fontFamily: 'Poppins', ...stylingFonts }}
                 >
                   {plan.name}
                 </Typography>
                 <Typography
-                  variant="h2"
+                  variant="h1"
                   textAlign="center"
                   sx={{ fontFamily: 'Poppins' }}
                 >
@@ -175,10 +175,17 @@ const Pricing = (props: Props) => {
                 <Button
                   variant="contained"
                   color="secondary"
-                  sx={{ margin: 'auto 0', ...stylingButton }}
                   onClick={purchaseHandler.bind(null, plan.id)}
+                  sx={{
+                    paddingLeft: '15%',
+                    paddingRight: '15%',
+                    marginTop: '3%',
+                    marginBottom: '3%',
+                    fontWeight: '700',
+                    ...stylingButton,
+                  }}
                 >
-                  Purchase
+                  <Typography variant="h5">PURCHASE</Typography>
                 </Button>
               </Paper>
             </Grid>

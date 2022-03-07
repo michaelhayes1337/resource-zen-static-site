@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
         top: 'auto',
         bottom: 0,
         backgroundColor: '#E2EFFF',
-        height: '25vh',
+        height: '35vh',
       }}
     >
       <Box
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
           height: 'auto',
         }}
       >
-        <Grid container spacing={1}>
+        <Grid container spacing={1} sx={{ marginTop: '5vh' }}>
           <Grid
             item
             xs={12}
@@ -91,11 +91,19 @@ const Footer: React.FC = () => {
             item
             xs={12}
             md={4}
-            sx={{ display: 'grid', placeItems: 'center' }}
+            sx={{
+              display: 'grid',
+              placeItems: 'center',
+            }}
           >
             <Typography
               variant="h3"
-              sx={{ width: '100%', marginBottom: '3%', marginTop: '6%' }}
+              sx={{
+                width: '100%',
+                marginBottom: '0%',
+                marginTop: '0%',
+                fontWeight: '700',
+              }}
             >
               Links
             </Typography>
@@ -109,10 +117,10 @@ const Footer: React.FC = () => {
                         <Button
                           variant="text"
                           sx={{
-                            fontFamily: 'Poppins',
-                            color: isNaviagted ? '#49B295' : 'black',
+                            color: isNaviagted ? '#506C94' : 'black',
                             fontWeight: isNaviagted ? '700' : '400',
                             textTransform: 'none',
+                            fontSize: '22px',
                           }}
                         >
                           {page}
@@ -128,11 +136,19 @@ const Footer: React.FC = () => {
             item
             xs={12}
             md={4}
-            sx={{ display: 'grid', placeItems: 'center' }}
+            sx={{
+              display: 'grid',
+              placeContent: 'flex-start',
+            }}
           >
             <Typography
               variant="h3"
-              sx={{ width: '100%', marginBottom: '0%', marginTop: '1%' }}
+              sx={{
+                width: '100%',
+                marginBottom: '0%',
+                marginTop: '0%',
+                fontWeight: '700',
+              }}
             >
               Get In Touch
             </Typography>
@@ -149,10 +165,10 @@ const Footer: React.FC = () => {
                       <Button
                         variant="text"
                         sx={{
-                          fontFamily: 'Poppins',
                           color: 'black',
                           fontWeight: '400',
                           textTransform: 'none',
+                          fontSize: '22px',
                         }}
                       >
                         {contactInfo.content}

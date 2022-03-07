@@ -13,7 +13,7 @@ export default class MyDocument extends Document {
             href="https://fonts.googleapis.com/icon?family=Material+Icons"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Space+Grotesk:wght@400;500;700&display=swap"
             rel="stylesheet"
           />
           <link rel="shortcut icon" href="/static/favicon.ico" />

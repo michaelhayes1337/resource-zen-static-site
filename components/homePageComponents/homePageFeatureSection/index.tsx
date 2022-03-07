@@ -57,7 +57,12 @@ const HomePageFeatureSection = (props: Props) => {
       <Typography
         variant="subtitle1"
         textAlign="center"
-        sx={{ fontFamily: 'Poppins', color: 'white', fontWeight: '400' }}
+        sx={{
+          fontFamily: 'Poppins',
+          color: 'white',
+          fontWeight: '400',
+          fontSize: '24px',
+        }}
       >
         Velit officia consequat duis enim velit mollit. Exercitation veniam
         consequat sunt nostrud amet.
@@ -102,14 +107,27 @@ const HomePageFeatureSection = (props: Props) => {
                 ) : (
                   <StockIcon sx={iconStyling} />
                 )}
-                <Typography variant="h4" sx={{ fontFamily: 'Poppins' }}>
-                  {service.title}
-                </Typography>
-                {service.extra && (
-                  <Typography variant="h4" sx={{ fontFamily: 'Poppins' }}>
-                    {service.extra}
+                <Box
+                  sx={{
+                    display: 'grid',
+                    placeItems: 'center',
+                  }}
+                >
+                  <Typography
+                    variant="h4"
+                    sx={{ fontFamily: 'Poppins', fontSize: '36px' }}
+                  >
+                    {service.title}
                   </Typography>
-                )}
+                  {service.extra && (
+                    <Typography
+                      variant="h4"
+                      sx={{ fontFamily: 'Poppins', fontSize: '36px' }}
+                    >
+                      {service.extra}
+                    </Typography>
+                  )}
+                </Box>
               </Paper>
             </Grid>
           );

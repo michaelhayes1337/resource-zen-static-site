@@ -55,7 +55,7 @@ const ContactLinksList = (props: Props) => {
 
   return (
     <Box>
-      <Typography variant="h2" sx={{ marginBottom: '5vh' }}>
+      <Typography variant="h1" sx={{ marginBottom: '5vh' }}>
         <span style={{ color: '#49b295' }}>Resource</span>{' '}
         <span style={{ color: '#6295D2' }}>Zen</span> would love to hear from
         you
@@ -83,7 +83,10 @@ const ContactLinksList = (props: Props) => {
                     <MobileIcon sx={iconStyling} />
                   )}
                 </ListItemIcon>
-                <ListItemText primary={contact.content} />
+                <ListItemText
+                  sx={{ fontSize: '50px', fontWeight: '400' }}
+                  primary={contact.content}
+                />
               </ListItemButton>
             </a>
           );
