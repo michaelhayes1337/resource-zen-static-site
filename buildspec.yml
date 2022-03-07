@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      nodejs: 12
+    commands:
+      # Install dependencies needed
+      - npm install
+
+      # Upgrade AWS CLI to the latest version
+      - pip install --upgrade awscli
+  pre_build:
+    commands:
+      # Build the react app to give an optimized production build
+      - npm run buildstaticexport
+  build:
+    commands:
+      # Copy the content of build folder into website s3 bucket
+      - aws s3 sync build/ s3://$WEBSITE_S3_BUCKET/
