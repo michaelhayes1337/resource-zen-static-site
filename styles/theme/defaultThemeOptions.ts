@@ -18,10 +18,10 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ['Space Grotesk', 'sans-serif', 'Poppins'].join(','),
-    fontWeightLight: 1000,
-    fontWeightRegular: 1000,
-    fontWeightMedium: 1000,
-    fontWeightBold: 1000,
+    fontWeightLight: 400,
+    fontWeightRegular: 400,
+    fontWeightMedium: 700,
+    fontWeightBold: 700,
     h1: {
       fontFamily: 'Space Grotesk',
       fontSize: '3.8em',
@@ -30,18 +30,30 @@ const theme = createTheme({
     },
     h2: {
       fontFamily: 'Space Grotesk',
-      fontSize: '3.5em',
+      fontSize: '48px',
       fontWeight: 700,
       lineHeight: 1.27,
     },
     h3: {
       fontFamily: 'Space Grotesk',
-      fontSize: '1.8rem',
+      fontSize: '34px',
       fontWeight: 700,
     },
     h4: {
       fontFamily: 'Space Grotesk',
       fontWeight: 700,
+    },
+    h5: {
+      fontFamily: 'Space Grotesk',
+      fontWeight: 700,
+    },
+    subtitle1: {
+      fontSize: '22px',
+      fontWeight: '400',
+    },
+    subtitle2: {
+      fontSize: '24px',
+      fontWeight: '400',
     },
   },
   components: {

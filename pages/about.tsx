@@ -20,14 +20,14 @@ const About = (props: Props) => {
         width: '100%',
       }}
     >
-      <Typography variant="h2" textAlign="right" sx={{ marginBottom: '1vh' }}>
+      <Typography variant="h1" textAlign="right" sx={{ marginBottom: '1vh' }}>
         What is <span style={{ color: '#49b295' }}>Resource</span>{' '}
         <span style={{ color: '#6295D2' }}>Zen</span>?
       </Typography>
       <Typography
-        variant="subtitle1"
+        variant="subtitle2"
         textAlign="right"
-        sx={{ fontWeight: '700', lineHeight: '2rem' }}
+        sx={{ lineHeight: '55px' }}
       >
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi unde,
         nostrum consectetur adipisci fugiat, vitae quidem nam accusantium totam

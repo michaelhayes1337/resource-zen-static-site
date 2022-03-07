@@ -22,34 +22,7 @@ const Navbar: React.FC = () => {
   const theme = useTheme();
   const router = useRouter();
   const isMatch = useMediaQuery(theme.breakpoints.down('lg'));
-  // const [value, setValue] = React.useState(0);
-
   const navbarCTX = useContext(ctx);
-  // console.log(colorList);
-
-  // useEffect(() => {
-  //   switch (router.asPath) {
-  //     case '/':
-  //       setValue(0);
-  //       break;
-  //     case '/about':
-  //       setValue(1);
-  //       break;
-  //     case '/roadmap':
-  //       setValue(2);
-  //       break;
-  //     case '/pricing':
-  //       setValue(3);
-  //       break;
-  //     case '/contact':
-  //       setValue(4);
-  //       break;
-  //     default:
-  //       // not a page on the navigation bar
-  //       setValue(-1);
-  //       break;
-  //   }
-  // }, [router.asPath]);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     switch (newValue) {
@@ -69,8 +42,6 @@ const Navbar: React.FC = () => {
         router.push('/contact');
         break;
     }
-    // setValue(newValue);
-    // navbarCTX?.setSelected(newValue);
   };
 
   return (
@@ -111,7 +82,7 @@ const Navbar: React.FC = () => {
                     style: { visibility: 'hidden' },
                   }}
                   sx={{
-                    '.Mui-selected': { color: '#506C94' },
+                    '.Mui-selected': { color: '#506C94', fontWeight: '700' },
                   }}
                 >
                   {pages.map((page, index) => {
@@ -123,8 +94,9 @@ const Navbar: React.FC = () => {
                         sx={{
                           fontFamily: 'Poppins',
                           color: 'black',
-                          fontWeight: '700',
+                          fontWeight: '400',
                           textTransform: 'none',
+                          fontSize: '24px',
                         }}
                       />
                     );
@@ -148,6 +120,7 @@ const Navbar: React.FC = () => {
                     color: 'black',
                     fontWeight: '400',
                     textTransform: 'none',
+                    fontSize: '18px',
                   }}
                 >
                   Sign Up
@@ -159,6 +132,7 @@ const Navbar: React.FC = () => {
                     fontFamily: 'Poppins',
                     fontWeight: '400',
                     textTransform: 'none',
+                    fontSize: '18px',
                   }}
                   onClick={() => {
                     router.push('/signup');

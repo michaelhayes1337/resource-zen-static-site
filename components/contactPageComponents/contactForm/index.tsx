@@ -204,6 +204,7 @@ const testForm = (props: Props) => {
                   marginBottom: '10px',
                   marginTop: '10px',
                   color: '#5F9BE4',
+                  fontWeight: '500px',
                 }}
               >
                 {input.id}

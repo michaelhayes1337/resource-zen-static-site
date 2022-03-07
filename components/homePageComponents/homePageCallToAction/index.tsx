@@ -40,13 +40,14 @@ const HomePageCallToAction = (props: Props) => {
         variant="contained"
         color="secondary"
         sx={{
-          paddingLeft: '5%',
-          paddingRight: '5%',
+          paddingLeft: '8%',
+          paddingRight: '8%',
           marginTop: '3%',
           marginBottom: '3%',
+          fontWeight: '700',
         }}
       >
-        <Typography variant="h3">GET STARTED</Typography>
+        <Typography variant="h5">GET STARTED</Typography>
       </Button>
       <Box
         sx={
