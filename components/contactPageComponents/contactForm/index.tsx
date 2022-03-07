@@ -189,7 +189,7 @@ const testForm = (props: Props) => {
     >
       <Grid container spacing={0}>
         <Grid item xs={12} sx={{ display: 'grid', placeContent: 'center' }}>
-          <Typography variant="h4" sx={{ color: '#5F9BE4' }}>
+          <Typography variant="h2" sx={{ color: '#5F9BE4' }}>
             Get in Touch
           </Typography>
         </Grid>
