@@ -5,6 +5,7 @@
     "lint": "next lint",
     "build": "next build",
     "start": "next start",
+    "buildstaticexport": "next build && next export",
     "test": "jest --watch",
     "test:ci": "jest --ci"
   },
