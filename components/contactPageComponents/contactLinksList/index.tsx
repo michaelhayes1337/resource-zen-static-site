@@ -84,7 +84,7 @@ const ContactLinksList = (props: Props) => {
                   )}
                 </ListItemIcon>
                 <ListItemText
-                  sx={{ fontSize: '30px', fontWeight: '400' }}
+                  sx={{ fontSize: '50px', fontWeight: '400' }}
                   primary={contact.content}
                 />
               </ListItemButton>
